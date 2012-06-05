@@ -1,10 +1,3 @@
-\thispagestyle{empty}
-\changepage{}{}{}{-1.5cm}{}{2cm}{}{}{}
-![The Little WakandaDB Book, By Juergen Fesslmeier](title.png)\
-
-\clearpage
-\changepage{}{}{}{1.5cm}{}{-2cm}{}{}{}
-
 ## About This Book ##
 
 ### License ###
@@ -26,7 +19,7 @@ You can see the full text of the license at:
 
 [Melinda Gallo](http://example.com)
 
-This book has been inspired by Karl Seguin's book [The Little MongoDB Book](https://github.com/karlseguin/the-little-mongodb-book/)
+This book has been inspired by Karl Seguin's book [The Little MongoDB Book](https://github.com/karlseguin/the-little-mongodb-book/).
 
 ### Latest Version ###
 The latest source of this book is available at:
@@ -58,7 +51,7 @@ We create a new student entity.
 
     ds.Student.create({first: "Sean", last: "Parker"});
 
-You can now query the student `Sean Parker` the following way:
+You can now query this student as follows.
 
     ds.Student.find("last = 'Parker'")
     => {ID: 1, first: "Sean", last: "Parker"}
