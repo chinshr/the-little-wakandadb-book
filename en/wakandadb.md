@@ -24,7 +24,7 @@ This book has been inspired by Karl Seguin's book [The Little MongoDB Book](http
 ### Latest Version ###
 The latest source of this book is available at:
 
-<http://github.com/chinshr/...>.
+<https://github.com/chinshr/the-little-wakandadb-book>
 
 \clearpage
 
