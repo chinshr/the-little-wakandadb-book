@@ -216,13 +216,49 @@ Finally, the `onSort` event is not complex at all, because it just determines th
 
 So let's sort attendee entities based on `grade`
 
-    ds.Attendee.all().orderBy("grade").gradePoint;
-    => [4, 3.67, 2.67, 2.33, 2, 1]
-
-Elapsed time: 19:32
+    ds.Attendee.all().orderBy("grade").grade;
+    => ["A", "A-", "B+", "B", "B-", "C+", "C", "C-", "D+", "D", "F"]
 
 ### Relation attributes
 E.g. teacher attribute on Course of type Teacher
+
+At this point you would typical begin to link your data classes together. So for instance, and attendee is a student who is taking a course. So we are showing how to create a relational attribute that relates to another class. We create a `student` attribute in the `Attendee` class which belongs to a student.
+
+    ds.Attendee.extend({attributes: {
+      student: {relation: "belongsTo"}
+    }});
+
+Note that the framework can infer automatically that the attribute `student` is of type `Student` simple from the way we named the attribute. Now we probably also want to add the reciprocal has many relation `attendance` onto the `Student` class.
+
+    ds.Student.extend({attributes: {
+      attendance: {relation: "hasMany", type: "Attendee"}
+    }});
+
+This time the type could not be inferred correctly, therefore, we have to add the type reference explicitly. We just extended the model that the attendee belongs to a student and a student has many attendees. So, of course, we continue adding the course into attendee.
+
+    ds.Attendee.extend({attributes: {
+      course: {relation: "belongsTo"}
+    }});
+
+We also define the reciprocal `courses` on the `Course` class.
+
+    ds.Course.extend({attributes: {
+      attendance : {relation: "hasMany", type: "Attendee"}
+    }});
+
+Let's continue on with 
+
+    ds.Course.extend({attributes: {
+      teacher: {relation: "belongsTo"}
+    }});
+
+And again, let's add the has many reciprocal relationship on `Teacher` class. However, we could also decide that we don't need that at this time. For the purpose of this book, let's add it though.
+
+    ds.Teacher.extend({attributes: {
+      courses: {relation: "hasMany"}
+    }});
+
+Elapsed 23:29
 
 ### Alias attributes
 E.g. "studentName" theStudent.fullName
